@@ -20,6 +20,10 @@ ultralytics>=8.2.34  # https://ultralytics.com
 
 gunicorn>=23.0.0
 
+Flask
+#opencv-python-headless
+
+
 # Logging ---------------------------------------------------------------------
 # tensorboard>=2.4.1
 # clearml>=1.2.0
