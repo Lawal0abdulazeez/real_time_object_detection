@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Object Detection</title>
+    <script>
+        function toggleCamera() {
+            fetch('/toggle_camera', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    const videoFeed = document.getElementById('video-feed');
+                    const toggleButton = document.getElementById('toggle-button');
+                    if (data.camera_on) {
+                        videoFeed.src = '/video_feed';
+                        toggleButton.textContent = 'Turn Off Camera';
+                    } else {
+                        videoFeed.src = '';
+                        toggleButton.textContent = 'Turn On Camera';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Real-Time Object Detection</h1>
+    <button id="toggle-button" onclick="toggleCamera()">Turn On Camera</button>
+    <div>
+        <img id="video-feed" alt="Video Feed" style="width: 100%; max-width: 640px; height: auto;">
+    </div>
+</body>
+</html>
